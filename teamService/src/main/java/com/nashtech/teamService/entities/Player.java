@@ -9,18 +9,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Team {
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long playerId;
+    private String playerName;
     private Long teamId;
-    private String teamName;
-    transient private List<Player> players;
 }

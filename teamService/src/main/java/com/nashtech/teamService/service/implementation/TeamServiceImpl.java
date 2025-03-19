@@ -12,9 +12,11 @@ import java.util.stream.Collectors;
 @Service
 public class TeamServiceImpl implements TeamService {
     private TeamRepository teamRepository;
+    private PlayerClient playerClient;
 
-    public TeamServiceImpl(TeamRepository teamRepository) {
+    public TeamServiceImpl(TeamRepository teamRepository, PlayerClient playerClient) {
         this.teamRepository = teamRepository;
+        this.playerClient = playerClient;
     }
 
     @Override
@@ -24,12 +26,19 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public Team getOne(Long teamId) {
-        return teamRepository.findById(teamId).orElseThrow(()-> new RuntimeException("Team not found."));
+        Team team = teamRepository.findById(teamId).orElseThrow(()-> new RuntimeException("Team not found."));
+        team.setPlayers(playerClient.getPlayersOfTeam(team.getTeamId()));
+        return team;
     }
 
     @Override
     public List<Team> getAll() {
-        return teamRepository.findAll();
+        List<Team> teams = teamRepository.findAll();
+        List<Team> teamListWithPlayers = teams.stream().map(team -> {
+            team.setPlayers(playerClient.getPlayersOfTeam(team.getTeamId()));
+            return team;
+        }).collect(Collectors.toList());
+        return teamListWithPlayers;
     }
 }
 
