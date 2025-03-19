@@ -1,7 +1,6 @@
 package com.nashtech.teamService.service;
 
 import com.nashtech.teamService.entities.Team;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

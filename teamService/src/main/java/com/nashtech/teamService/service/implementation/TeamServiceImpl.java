@@ -4,10 +4,8 @@ import com.nashtech.teamService.entities.Team;
 import com.nashtech.teamService.repository.TeamRepository;
 import com.nashtech.teamService.service.TeamService;
 import org.springframework.stereotype.Service;
-import com.nashtech.teamService.service.PlayerClient;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class TeamServiceImpl implements TeamService {
