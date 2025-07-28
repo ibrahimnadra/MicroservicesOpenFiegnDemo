@@ -28,6 +28,8 @@ spring-boot-open-feign-demo is a Spring Boot-based project that demonstrates int
 git clone https://github.com/ibrahimnadra/spring-boot-open-feign-demo.git
 ```
 
+### Checkout to the branch: OpenFeign
+
 ### Team Service Setup
 1. Navigate to the team service directory:
    ```bash
